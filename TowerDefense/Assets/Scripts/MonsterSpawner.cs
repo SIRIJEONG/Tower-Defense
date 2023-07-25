@@ -52,8 +52,9 @@ public class MonsterSpawner : MonoBehaviour
 
             regenSpawner = 1.0f;
 
-            if(currentIndex < 11)
+            if(currentIndex < 10)
             {
+                
             Monster[currentIndex].SetActive(true);
             Monster[currentIndex].transform.position = transform.position;
             currentIndex += 1;

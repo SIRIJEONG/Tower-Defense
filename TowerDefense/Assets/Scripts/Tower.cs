@@ -15,10 +15,10 @@ public class Tower : MonoBehaviour
 
     private float time = default;
 
-    
 
 
-    public CapsuleCollider2D capsuleCollider = default;
+    //public CapsuleCollider2D capsuleCollider2D = default;
+    public CircleCollider2D circleCollider2 = default;
 
 
     private List<GameObject> collEnemys = new List<GameObject>();
@@ -31,7 +31,8 @@ public class Tower : MonoBehaviour
         animator1 = animator1.GetComponentInChildren<Animator>();
         animator2 = animator2.GetComponentInChildren<Animator>();
         animator3 = animator3.GetComponentInChildren<Animator>();
-        capsuleCollider.enabled = false;
+        circleCollider2.enabled = false;
+        //edgeCollider2D.enabled = false;
     }
 
     // Update is called once per frame
@@ -55,26 +56,27 @@ public class Tower : MonoBehaviour
 
         time += Time.deltaTime;
     }
-    public void onOff()
-    {
+    //public void onOff()
+    //{
+
+    //    if(time > 0f)
+    //    {
+    //        circleCollider2.enabled = true;
+    //        //edgeCollider2D.enabled = true;
+    //        time = -1.0f;
+    //    }
+    //    else if(time < 0) 
+    //    {
+    //        circleCollider2.enabled = false;
+    //        //edgeCollider2D.enabled = false;
+
+    //    }
 
 
-        if(time > 0f)
-        {
-            capsuleCollider.enabled = true;
-            time = -1;
-        }
-        else if(time < 0) 
-        {
-            capsuleCollider.enabled = false;
-
-        }
-
-        
 
 
 
-    }
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -84,8 +86,8 @@ public class Tower : MonoBehaviour
             collEnemys.Add(collision.gameObject);
             animator1.SetBool("Attack2 Bool", isAttack);
             animator2.SetBool("Attack3 Bool", isAttack);
-            animator3.SetBool("Attack Bool", isAttack);   
-            onOff();
+            animator3.SetBool("Attack Bool", isAttack);
+            circleCollider2.enabled = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -98,7 +100,7 @@ public class Tower : MonoBehaviour
             animator2.SetBool("Attack3 Bool", isAttack);
             animator3.SetBool("Attack Bool", isAttack);
         }
-            foreach (GameObject go in collEnemys)
+        foreach (GameObject go in collEnemys)
         {
 
             if (go == collision.gameObject)

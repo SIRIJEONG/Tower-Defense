@@ -56,11 +56,11 @@ public class MonsterMove : MonoBehaviour
     
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Bullet")
         {
-            hp -= 100.0f;
+            hp -=0.7f;
         }
 
 
