@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,9 +12,11 @@ public class GameManager : MonoBehaviour
 
     public bool isFinish = false;
     public bool isGameOver = false;
-    public TMP_Text scoreText; // Text mesh pro컴포넌트 쓴 경우
+    public Text scoreText; 
     public GameObject gameoverUi;
+    public Text GoldText;
     public float score = default;
+    public float gold = default;
 
 
 
@@ -43,13 +47,7 @@ public class GameManager : MonoBehaviour
         {
             GFunc.LoadScene(GFunc.GetActiveSceneName());
         }
-        //if (isGameOver == false)
-        //{
-        //    score += Time.deltaTime * 2;
-        //    scoreText.text = string.Format("Score : {0}M", (int)score);
 
-
-        //}
     }
 
 
@@ -60,8 +58,18 @@ public class GameManager : MonoBehaviour
         gameoverUi.SetActive(true);
     }
 
-    public void Finish()
+    public void AddScore(int newScore)
     {
+        score += newScore;
+        scoreText.text = string.Format("scoreText : {0}", score);
+    }
+
+    public void AddGold(int newGold)
+    {
+        gold += newGold;
+        GoldText.text = string.Format("Gold : {0}" , gold);
 
     }
+
+
 }

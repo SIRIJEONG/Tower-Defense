@@ -19,6 +19,8 @@ public class MakeObject : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
+
+
         Vector2 currentPos = eventData.position;
         this.transform.position = currentPos;
 

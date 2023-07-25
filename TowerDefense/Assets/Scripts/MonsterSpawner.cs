@@ -6,7 +6,7 @@ using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
     public GameObject MonsterPrefab;
-    public int count = 10;
+    public int count = 100;
 
     public float regenTime = 1.0f;
 
@@ -52,7 +52,7 @@ public class MonsterSpawner : MonoBehaviour
 
             regenSpawner = 1.0f;
 
-            if(currentIndex < 10)
+            if(currentIndex < 100)
             {
                 
             Monster[currentIndex].SetActive(true);
@@ -60,7 +60,7 @@ public class MonsterSpawner : MonoBehaviour
             currentIndex += 1;
 
             }
-            else if (currentIndex == 11)
+            else if (currentIndex == 101)
             {
                 return;
             }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class MonsterMove : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class MonsterMove : MonoBehaviour
     private int wayPointIndex;
     public float speed = 0.5f;
     public  float hp = 100.0f;
-
+    public int life = 3;
+    public int score = 0;
     //public GameObject[] obstacles;
     //private bool stepped = false;
 
@@ -46,9 +48,15 @@ public class MonsterMove : MonoBehaviour
             
                 wayPointIndex++;
 
-            if(wayPointIndex == 9)
+            if (wayPointIndex == 9)
             {
                 Destroy(gameObject);
+                life--;
+                if (life == 0)
+                {
+                    GameManager.Instance.OnPlayerDead();
+                }
+                
             }
             
         }
@@ -60,7 +68,7 @@ public class MonsterMove : MonoBehaviour
     {
         if (collision.tag == "Bullet")
         {
-            hp -=0.7f;
+            hp -=0.2f;
         }
 
 
@@ -68,6 +76,9 @@ public class MonsterMove : MonoBehaviour
         if (hp <= 0)
         {
             Destroy(gameObject);
+            GameManager.Instance.AddScore(10);
+            GameManager.Instance.AddGold(15);
+            
         }
     }
 
